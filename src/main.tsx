@@ -10,7 +10,7 @@ import PublicLayout from './layouts/public-layout';
 import ProtectedLayout from './layouts/protected-layout';
 import { AuthProvider } from './hooks/useAuth';
 import PermissionsGate from './components/permission-gate';
-import { ACTION_TYPE, PERMISSION } from './config';
+import { PERMISSION } from './config';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           {
-            element: <PermissionsGate permissions={[PERMISSION.DASHBOARD_PAGE]} actionType={ACTION_TYPE.REDIRECT} />,
+            element: <PermissionsGate permissions={[PERMISSION.DASHBOARD_PAGE]} actionType="REDIRECT" />,
             children: [
               {
                 path: 'dashboard',
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            element: <PermissionsGate permissions={[PERMISSION.USERS_PAGE]} actionType={ACTION_TYPE.REDIRECT} />,
+            element: <PermissionsGate permissions={[PERMISSION.USERS_PAGE]} actionType="REDIRECT" />,
             children: [
               {
                 path: 'users',

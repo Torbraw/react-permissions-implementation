@@ -5,5 +5,5 @@ type Props = {
 };
 
 export default function PageLayout({ children }: Props) {
-  return <div className="mt-8 flex flex-col gap-16">{children}</div>;
+  return <div className="mt-8 flex flex-col items-center gap-16">{children}</div>;
 }
