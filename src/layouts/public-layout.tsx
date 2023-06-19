@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import PageLayout from './page-layout';
 
 export default function PublicLayout() {
   const { currentUser } = useAuth();
@@ -8,5 +9,9 @@ export default function PublicLayout() {
     return <Navigate to={'/dashboard'} />;
   }
 
-  return <Outlet />;
+  return (
+    <PageLayout>
+      <Outlet />
+    </PageLayout>
+  );
 }

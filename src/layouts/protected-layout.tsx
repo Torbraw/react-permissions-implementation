@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import Navbar from '../components/navbar';
+import PageLayout from './page-layout';
 
 export default function ProtectedLayout() {
   const { currentUser } = useAuth();
@@ -12,7 +13,9 @@ export default function ProtectedLayout() {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <PageLayout>
+        <Outlet />
+      </PageLayout>
     </>
   );
 }

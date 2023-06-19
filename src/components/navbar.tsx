@@ -3,6 +3,8 @@ import { useAuth } from '../hooks/useAuth';
 import { Button } from './ui/button';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import PermissionsGate from './permission-gate';
+import { ACTION_TYPE, PERMISSION } from '../config';
 
 export default function Navbar() {
   const { logout } = useAuth();
@@ -12,32 +14,36 @@ export default function Navbar() {
       <header className="w-full border-b">
         <div className="flex h-14 items-center px-8">
           <nav className="flex flex-1 space-x-6 font-medium">
-            <NavLink
-              className={({ isActive }) =>
-                twMerge(
-                  clsx({
-                    'text-foreground/60 transition-colors hover:text-foreground/80': true,
-                    'text-foreground': isActive,
-                  }),
-                )
-              }
-              to="/dashboard"
-            >
-              Dashboard
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                twMerge(
-                  clsx({
-                    'text-foreground/60 transition-colors hover:text-foreground/80': true,
-                    'text-foreground': isActive,
-                  }),
-                )
-              }
-              to="/reporting"
-            >
-              Reporting
-            </NavLink>
+            <PermissionsGate permissions={[PERMISSION.DASHBOARD_PAGE]} actionType={ACTION_TYPE.HIDE}>
+              <NavLink
+                className={({ isActive }) =>
+                  twMerge(
+                    clsx({
+                      'text-foreground/60 transition-colors hover:text-foreground/80': true,
+                      'text-foreground': isActive,
+                    }),
+                  )
+                }
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </PermissionsGate>
+            <PermissionsGate permissions={[PERMISSION.USERS_PAGE]} actionType={ACTION_TYPE.HIDE}>
+              <NavLink
+                className={({ isActive }) =>
+                  twMerge(
+                    clsx({
+                      'text-foreground/60 transition-colors hover:text-foreground/80': true,
+                      'text-foreground': isActive,
+                    }),
+                  )
+                }
+                to="/users"
+              >
+                Users
+              </NavLink>
+            </PermissionsGate>
           </nav>
           <div className="flex">
             <Button

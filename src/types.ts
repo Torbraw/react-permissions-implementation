@@ -1,19 +1,12 @@
-export const PERMISSION = {
-  ADMIN: 'ui:*',
-  DASHBOARD_PAGE: 'ui:page:dashboard',
-  REPORTING_PAGE: 'ui:page:reporting',
-} as const;
+import { ACTION_TYPE, PERMISSION } from './config';
+
 export type PermissionValues = (typeof PERMISSION)[keyof typeof PERMISSION];
 
-export const ACTION_TYPE = {
-  HIDE: 'HIDE',
-  REDIRECT: 'REDIRECT',
-  DISABLE: 'DISABLE',
-} as const;
 export type ActionTypeKeys = keyof typeof ACTION_TYPE;
 
 export type User = {
   name: string;
+  description: string;
   permissions: Array<PermissionValues>;
 };
 

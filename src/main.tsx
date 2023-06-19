@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom/client';
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Login from './pages/login';
-import Reporting from './pages/reporting';
+import Users from './pages/users';
 import PublicLayout from './layouts/public-layout';
 import ProtectedLayout from './layouts/protected-layout';
 import { AuthProvider } from './hooks/useAuth';
 import PermissionsGate from './components/permission-gate';
-import { ACTION_TYPE, PERMISSION } from './types';
+import { ACTION_TYPE, PERMISSION } from './config';
 
 const router = createBrowserRouter([
   {
@@ -42,11 +42,11 @@ const router = createBrowserRouter([
             ],
           },
           {
-            element: <PermissionsGate permissions={[PERMISSION.REPORTING_PAGE]} actionType={ACTION_TYPE.REDIRECT} />,
+            element: <PermissionsGate permissions={[PERMISSION.USERS_PAGE]} actionType={ACTION_TYPE.REDIRECT} />,
             children: [
               {
-                path: 'reporting',
-                element: <Reporting />,
+                path: 'users',
+                element: <Users />,
               },
             ],
           },

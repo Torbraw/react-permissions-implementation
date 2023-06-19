@@ -1,7 +1,8 @@
 import { JSXElementConstructor, ReactElement, cloneElement } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { ActionTypeKeys, ACTION_TYPE, PermissionValues } from '../types';
+import { ActionTypeKeys, PermissionValues } from '../types';
+import { ACTION_TYPE } from '../config';
 
 type Props = {
   permissions: Array<PermissionValues>;
