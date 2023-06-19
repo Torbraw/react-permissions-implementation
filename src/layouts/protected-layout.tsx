@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import Navbar from '../components/navbar';
 
 export default function ProtectedLayout() {
   const { currentUser } = useAuth();
@@ -8,5 +9,10 @@ export default function ProtectedLayout() {
     // User is not authenticated, redirect to login
     return <Navigate to="/login" />;
   }
-  return <Outlet />;
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
 }

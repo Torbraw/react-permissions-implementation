@@ -6,6 +6,7 @@ import { PERMISSION, User } from '../types';
 export default function Login() {
   const { login } = useAuth();
 
+  // Simulate users from a database
   const users: User[] = [
     {
       name: 'Admin',
