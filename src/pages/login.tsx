@@ -1,5 +1,5 @@
 import PageTitle from '../components/page-title';
-import UserCards from '../layouts/user-cards';
+import UserCards from '../components/user-cards';
 
 export default function Login() {
   return (
