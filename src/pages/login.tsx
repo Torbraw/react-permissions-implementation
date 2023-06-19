@@ -1,7 +1,7 @@
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
 import { useAuth } from '../hooks/useAuth';
-import { Permissions, User } from '../types';
+import { PERMISSION, User } from '../types';
 
 export default function Login() {
   const { login } = useAuth();
@@ -9,19 +9,19 @@ export default function Login() {
   const users: User[] = [
     {
       name: 'Admin',
-      permissions: [Permissions.ADMIN],
+      permissions: [PERMISSION.ADMIN],
+    },
+    {
+      name: 'Dashboard reader',
+      permissions: [PERMISSION.DASHBOARD_PAGE],
     },
     {
       name: 'Reporting accountant',
-      permissions: [Permissions.DASHBOARD_PAGE, Permissions.REPORTING_PAGE],
-    },
-    {
-      name: 'User manager',
-      permissions: [Permissions.DASHBOARD_PAGE, Permissions.USERS_PAGE],
+      permissions: [PERMISSION.DASHBOARD_PAGE, PERMISSION.REPORTING_PAGE],
     },
     {
       name: 'Read only',
-      permissions: [Permissions.DASHBOARD_PAGE, Permissions.REPORTING_PAGE, Permissions.USERS_PAGE],
+      permissions: [PERMISSION.DASHBOARD_PAGE, PERMISSION.REPORTING_PAGE],
     },
   ];
 
@@ -34,7 +34,7 @@ export default function Login() {
               <CardTitle>{user.name}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1">
-              <h4>Permissions</h4>
+              <h4>Permission</h4>
               <ul>
                 {user.permissions.map((permission, i) => (
                   <li key={i} className="text-sm text-muted-foreground">

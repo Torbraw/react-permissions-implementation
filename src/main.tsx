@@ -9,6 +9,8 @@ import Reporting from './pages/reporting';
 import PublicLayout from './layouts/public-layout';
 import ProtectedLayout from './layouts/protected-layout';
 import { AuthProvider } from './hooks/useAuth';
+import PermissionsGate from './components/permission-gate';
+import { ACTION_TYPE, PERMISSION } from './types';
 
 const router = createBrowserRouter([
   {
@@ -31,12 +33,22 @@ const router = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           {
-            path: 'dashboard',
-            element: <Dashboard />,
+            element: <PermissionsGate permissions={[PERMISSION.DASHBOARD_PAGE]} actionType={ACTION_TYPE.REDIRECT} />,
+            children: [
+              {
+                path: 'dashboard',
+                element: <Dashboard />,
+              },
+            ],
           },
           {
-            path: 'reporting',
-            element: <Reporting />,
+            element: <PermissionsGate permissions={[PERMISSION.REPORTING_PAGE]} actionType={ACTION_TYPE.REDIRECT} />,
+            children: [
+              {
+                path: 'reporting',
+                element: <Reporting />,
+              },
+            ],
           },
         ],
       },
