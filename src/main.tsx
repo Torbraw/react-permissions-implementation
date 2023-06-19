@@ -1,8 +1,7 @@
 import './index.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Login from './pages/login';
 import Users from './pages/users';
@@ -17,8 +16,8 @@ const router = createBrowserRouter([
     element: <AuthProvider />,
     children: [
       {
-        path: '/',
-        element: <Home />,
+        path: '*',
+        element: <Navigate to="/login" replace={true} />,
       },
       {
         element: <PublicLayout />,

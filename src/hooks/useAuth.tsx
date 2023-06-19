@@ -33,7 +33,7 @@ export function AuthProvider() {
 
   const logout = useCallback(() => {
     setCurrentUser(undefined);
-    navigate('/', { replace: true });
+    navigate('/login', { replace: true });
   }, [navigate, setCurrentUser]);
 
   const decryptPermissions = useCallback(() => {
