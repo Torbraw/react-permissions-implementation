@@ -14,7 +14,8 @@ There is two main components to this implementation, the `useAuth.tsx` hook and 
 
 In this file you have a react context that will hold the user informations, some utility functions and the `useAuth` hook.
 
-- You have the `login()` and `logout()` functions that will update the user informations in state, stored in the localStorage with Zustand.
+- You have the `login()` function that will set currentUser in the state, stored in the localStorage with `Zustand`, and redirect the dashboard page.
+- You have the `logout()` function that remove the currentUser in the state and redirect to the login page.
 - The exposed `currentUser` state that contains the user informations.
 - A `hasPermissions()` function that will check if the user has the required permissions.
   - Note: This function also check if the user has the `admin` permission, which will give him access to everything.
