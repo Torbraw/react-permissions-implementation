@@ -12,7 +12,7 @@ export default function Dashboard() {
       />
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-2xl font-semibold">
-          This button will be disabled if you don't have CRUD access for this page
+          Those button will be disabled if you don't have CRUD access for this page
         </h1>
         <div className="flex gap-3">
           <PermissionsGate permissions={[PERMISSION.DASHBOARD_CRUD]} actionType="DISABLE">
