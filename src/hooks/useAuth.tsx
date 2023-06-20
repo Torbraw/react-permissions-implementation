@@ -50,7 +50,6 @@ export function AuthProvider() {
    */
   const hasPermissions = useCallback(
     (permissions: Array<PermissionValues>) => {
-      console.log(currentUser);
       const userPermissions = decryptPermissions();
       // Check the admin flag
       if (userPermissions.includes('ui:*')) {
@@ -58,7 +57,7 @@ export function AuthProvider() {
       }
       return permissions.every((p) => userPermissions.includes(p));
     },
-    [currentUser, decryptPermissions],
+    [decryptPermissions],
   );
 
   const value = useMemo(

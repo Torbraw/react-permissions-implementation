@@ -4,7 +4,7 @@ import PageLayout from './page-layout';
 
 export default function PublicLayout() {
   const { currentUser } = useAuth();
-  console.log(currentUser);
+
   if (currentUser) {
     return <Navigate to={'/dashboard'} />;
   }
