@@ -14,9 +14,12 @@ export default function Dashboard() {
         <h1 className="text-2xl font-semibold">
           This button will be disabled if you don't have CRUD access for this page
         </h1>
-        <PermissionsGate permissions={[PERMISSION.DASHBOARD_CRUD]} actionType="DISABLE">
-          <Button onClick={() => alert('Email sent')}>Send email</Button>
-        </PermissionsGate>
+        <div className="flex gap-3">
+          <PermissionsGate permissions={[PERMISSION.DASHBOARD_CRUD]} actionType="DISABLE">
+            <Button onClick={() => alert('Report generated (fake)')}>Generate report</Button>
+            <Button onClick={() => alert('Chart generated (fake)')}>Generate chart</Button>
+          </PermissionsGate>
+        </div>
       </div>
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-2xl font-semibold">

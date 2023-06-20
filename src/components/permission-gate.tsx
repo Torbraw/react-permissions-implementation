@@ -1,4 +1,4 @@
-import { JSXElementConstructor, ReactElement, cloneElement } from 'react';
+import { Children, ReactElement, ReactNode, cloneElement } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { ActionTypeKeys, PermissionValues } from '../types';
@@ -7,7 +7,7 @@ import { ACTION_TYPE } from '../config';
 type Props = {
   permissions: Array<PermissionValues>;
   actionType: ActionTypeKeys;
-  children?: ReactElement<unknown, string | JSXElementConstructor<unknown>>;
+  children?: ReactNode;
 };
 
 export default function PermissionsGate({ permissions, actionType, children }: Props) {
@@ -22,10 +22,7 @@ export default function PermissionsGate({ permissions, actionType, children }: P
         return <></>;
       case ACTION_TYPE.DISABLE:
         if (!children) return <></>;
-        if (Array.isArray(children)) {
-          return children.map((child, i) => cloneElement(child, { ...disabledProps, key: i }));
-        }
-        return cloneElement(children, disabledProps);
+        return Children.map(children, (child, i) => cloneElement(child as ReactElement, { ...disabledProps, key: i }));
       default:
         return <></>;
     }
