@@ -1,7 +1,8 @@
 # react-permissions-implementation
 
 This repository showcase how we can implement a permissions based system in a SPA react application.  
-It is bootstraped with the react-ts vite template, so it's only client side code. It could maybe work with SSR, but I haven't tried it.  
+It is bootstraped with the react-ts vite template, so it is only client side. It could maybe work with SSR, but I haven't tried it.  
+  
 If you find something that could be improved, you're more than welcome to open an issue or a PR.  
 I'm by no means an expert, just wanted to share my implementation.
 
