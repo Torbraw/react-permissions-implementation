@@ -8,7 +8,7 @@ I'm by no means an expert, just wanted to share my implementation.
 
 ## How it works
 
-There is two main components to this implementation, the `useAuth.tsx` hook and the `permission-gate.tsx` components.
+There is two main components to this implementation, the `useAuth.tsx` hook and the `permission-gate.tsx` component.
 
 ### useAuth.tsx
 
